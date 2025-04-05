@@ -6,5 +6,7 @@ add my own books for free. If you find any bugs or have any suggestions, let me
 know on my discord at @doctorthe113. Thanks for using it and checking my project
 :D
 
-To use it: http://inkflow.doctorthe113.com
-https://doctorthe113.github.io/inkflow
+To use it: 
+http://inkflow.doctorthe113.com
+
+(preferred)https://doctorthe113.github.io/inkflow
