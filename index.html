@@ -3,18 +3,54 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="darkreader-lock">
         <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+            rel="shortcut icon"
+            href="./src/assets/favicon.svg"
+            type="image/x-icon"
         />
-        <link rel="shortcut icon" href="./src/assets/favicon.svg" type="image/x-icon" />
+        <!--  Essential META Tags  -->
+        <meta
+            name="description"
+            content="A type practice webapp inspired by typelit.io. Practice with your own books or choose from the sample books!"
+        />
+
+        <!--  Open Graph / Facebook  -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="http://inkflow.doctorthe113.com/" />
+        <!-- Replace with your actual URL -->
+        <meta property="og:title" content="Inkflow.io" />
+        <meta
+            property="og:description"
+            content="A type practice webapp inspired by typelit.io. Practice with your own books!"
+        />
+        <meta
+            property="og:image"
+            content="https://inkflow.io/images/og-image.png"
+        />
+        <!-- Replace with your OG image URL -->
+
+        <!--  Twitter  -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+            property="twitter:url"
+            content="http://inkflow.doctorthe113.com/"
+        />
+        <!-- Replace with your actual URL -->
+        <meta property="twitter:title" content="Inkflow.io" />
+        <meta
+            property="twitter:description"
+            content="A type practice webapp inspired by typelit.io. Practice with your own books!"
+        />
+        <meta property="twitter:creator" content="@doctorthe113">
+        <!-- Optional: Your Twitter handle -->
         <title>Inkflow.io</title>
     </head>
     <body>
         <p style="opacity: 0; height: 0">
-            This is a type practice webapp inspired by typelit.io. I made it to practice
-            react and I wanted to import my own books. Let me know if you liked this or
-            not.
+            This is a type practice webapp inspired by typelit.io. I made it to
+            practice react and I wanted to import my own books. Let me know if
+            you liked this or not.
         </p>
         <div id="root"></div>
         <script type="module" src="./src/main.jsx"></script>

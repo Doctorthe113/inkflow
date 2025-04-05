@@ -1,20 +1,23 @@
-import { useEffect, useState } from 'react';
-import inkflow from './assets/inkflow.webp';
-import HomePage from './components/home-page';
-import TypePage from './components/type-page';
-import UserPage from './components/user-page';
-import './App.css';
-import './assets/themes.css';
+import { useEffect, useState } from "react";
+import HomePage from "./components/home-page";
+import TypePage from "./components/type-page";
+import UserPage from "./components/user-page";
+import "./App.css";
+import "./assets/themes.css";
+
+import { IcRoundHome } from "./icons/home";
+import { IcBaselineKeyboard } from "./icons/keyboard";
+import { IcBaselineRefresh } from "./icons/refresh";
+import { IcBaselinePerson } from "./icons/user";
 
 function App() {
-    const [page, setPage] = useState('home');
+    const [page, setPage] = useState("home");
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-    const [render, triggerRender] = useState(true);
 
     const refresh = () => {
         let prevPage = page;
-        setPage('none');
+        setPage("none");
         setTimeout(() => {
             setPage(prevPage);
         }, 100);
@@ -22,17 +25,17 @@ function App() {
 
     const handlePage = (p) => {
         let navButton = document.getElementById(`${p}-button`);
-        let otherButton = document.getElementsByClassName('nav-button');
+        let otherButton = document.getElementsByClassName("nav-button");
         for (let i = 0; i < otherButton.length; i++) {
-            otherButton[i].style.backgroundColor = 'transparent';
-            otherButton[i].style.borderColor = 'transparent';
-            otherButton[i].style.color = 'var(--accent-color)';
+            otherButton[i].style.backgroundColor = "transparent";
+            otherButton[i].style.borderColor = "transparent";
+            otherButton[i].style.color = "var(--accent-color)";
         }
         // changed the background and border color of nav buttons
-        navButton.style.backgroundColor = 'var(--navbutton-bg)';
+        navButton.style.backgroundColor = "var(--navbutton-bg)";
         navButton.style.borderColor =
-            'var(--accent-color) var(--accent-color) var(--background-color) var(--accent-color)';
-        navButton.style.color = 'var(--navbutton-color)';
+            "var(--accent-color) var(--accent-color) var(--background-color) var(--accent-color)";
+        navButton.style.color = "var(--navbutton-color)";
 
         // sets the page
         setPage(p);
@@ -52,63 +55,82 @@ function App() {
         };
 
         // checks if there is a config
-        let config = localStorage.getItem('config');
+        let config = localStorage.getItem("config");
         if (config) {
             handleConfigs(config);
         } else {
             config = JSON.stringify({
-                theme: 'catppuccin-mocha',
+                theme: "catppuccin-mocha",
                 punctuation: true,
                 caseCheck: true,
             });
-            localStorage.setItem('config', config);
+            localStorage.setItem("config", config);
         }
 
         // sets the background and border color of home button at the start
-        let homeButton = document.getElementById('home-button');
-        homeButton.style.backgroundColor = 'var(--navbutton-bg)';
+        let homeButton = document.getElementById("home-button");
+        homeButton.style.backgroundColor = "var(--navbutton-bg)";
         homeButton.style.borderColor =
-            'var(--accent-color) var(--accent-color) var(--background-color) var(--accent-color)';
-        homeButton.style.color = 'var(--navbutton-color)';
+            "var(--accent-color) var(--accent-color) var(--background-color) var(--accent-color)";
+        homeButton.style.color = "var(--navbutton-color)";
 
-        window.addEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
     // checks if the window is too small
-    if (windowWidth < 800 || windowHeight < 640) {
-        alert('Window is too small. Please use a larger screen.');
+    if (windowWidth < 800 || windowHeight <= 500) {
+        alert("Window is too small. Please use a larger screen.");
         return null;
     }
 
     return (
         <>
-            <div className='app'>
-                <div className='navbar'>
+            <div className="app">
+                <div className="navbar">
                     {/* prettier-ignore */}
-                    <a href='/'><img src={inkflow} /></a>
+                    <a href="/" className="inkflow-logo">
+                        inkFlow.io
+                    </a>
                     {/* prettier-ignore */}
-                    <div className='nav-buttons'>
-                        <button onClick={() => refresh()}><i className="material-symbols-outlined">refresh</i></button>
-                        <button id='home-button' className='nav-button' onClick={() => handlePage('home')}><i className="material-symbols-outlined">home</i></button>
-                        <button id='type-button' className='nav-button' onClick={() => handlePage('type')}><i className="material-symbols-outlined">keyboard</i></button>
-                        <button id='user-button' className='nav-button' onClick={() => handlePage('user')}><i className="material-symbols-outlined">person</i></button>
+                    <div className="nav-buttons">
+                        <button onClick={() => refresh()}>
+                            <IcBaselineRefresh className="icons" />
+                        </button>
+                        <button
+                            id="home-button"
+                            className="nav-button"
+                            onClick={() => handlePage("home")}
+                        >
+                            <IcRoundHome className="icons" />
+                        </button>
+                        <button
+                            id="type-button"
+                            className="nav-button"
+                            onClick={() => handlePage("type")}
+                        >
+                            <IcBaselineKeyboard className="icons" />
+                        </button>
+                        <button
+                            id="user-button"
+                            className="nav-button"
+                            onClick={() => handlePage("user")}
+                        >
+                            <IcBaselinePerson className="icons" />
+                        </button>
                     </div>
                 </div>
                 <hr />
-                <div className='pages'>
-                    {page == 'home' ? <HomePage /> : null}
-                    {page == 'type' ? <TypePage /> : null}
-                    {page == 'user' ? <UserPage /> : null}
+                <div className="pages">
+                    {page == "home" ? <HomePage /> : null}
+                    {page == "type" ? <TypePage /> : null}
+                    {page == "user" ? <UserPage /> : null}
                 </div>
             </div>
         </>
     );
 }
 
-const lock = document.createElement('meta');
-lock.name = 'darkreader-lock';
-document.head.appendChild(lock);
 export default App;

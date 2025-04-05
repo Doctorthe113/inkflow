@@ -60,7 +60,7 @@
     width: 100%;
     text-align: center;
     font-size: 22px;
-    color: var(--selection-color);
+    color: var(--selection-color) !important;
     z-index: 0;
     grid-area: 1/1/2/2;
 }
@@ -126,7 +126,7 @@
 }
 
 .stats-span {
-    font-family: 'Montserrat';
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS';
     font-size: 14px;
     font-weight: 900;
     width: 150px;
@@ -192,12 +192,3 @@
     width: 300px;
     background-color: var(--typebox-border);
 }
-
-/* @keyframes cursorFade {
-  0% {
-    border-width: 0px;
-  }
-  100% {
-    border-width: 1px;
-  }
-} */

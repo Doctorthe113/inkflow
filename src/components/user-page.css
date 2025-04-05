@@ -94,11 +94,19 @@ h4.blocked-text {
     border-color: #a86948 !important;
 }
 
+.theme-selector-btn:hover{
+    background-color: #cdd6f4;
+}
+
 .save-button {
-    border: var(--accent-color) 1px solid;
+    border: var(--accent-color) 3px solid;
     margin: 10px;
     padding: 2px 5px 2px 5px;
     border-radius: 4px;
     width: 50%;
     font-weight: 700;
+}
+
+.save-button:hover{
+    border-color: #cdd6f4;
 }
